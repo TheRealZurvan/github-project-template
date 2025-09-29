@@ -1,0 +1,14 @@
+$schema: 'https://moonrepo.dev/schemas/project.json'
+
+type: 'application'
+language: 'bash'
+
+project:
+  name: 'github-project'
+  description: 'A comprehensive GitHub repository template'
+
+tasks:
+  format:
+    script: 'echo "Ok"'
+  lint:
+    script: 'echo "Ok"'
