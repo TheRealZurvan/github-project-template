@@ -5,6 +5,10 @@ on:
     types: [ opened, synchronize, edited, reopened ]
     branches: [ master ]
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   checks:
     name: PR Checks
