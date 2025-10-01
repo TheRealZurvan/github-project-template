@@ -18,6 +18,10 @@ jobs:
         uses: moonrepo/setup-toolchain@v0
         with:
           auto-install: true
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
       - name: Validate PR title
         run: cog verify "${{ github.event.pull_request.title }}"
       - name: Run moon CI tasks
