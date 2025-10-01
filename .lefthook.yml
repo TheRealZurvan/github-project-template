@@ -3,6 +3,11 @@ commit-msg:
     cog:
       run: cog verify --file {1}
 
+pre-commit:
+  commands:
+    lint:
+      run: moon :lint
+
 pre-push:
   commands:
     cog:
