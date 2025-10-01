@@ -1,7 +1,7 @@
 commit-msg:
   commands:
     cog:
-      run: cog verify --file {1}
+      run: cog verify --ignore-merge-commits --file {1}
 
 pre-commit:
   commands:
@@ -11,4 +11,4 @@ pre-commit:
 pre-push:
   commands:
     cog:
-      run: cog check
+      run: cog check --ignore-merge-commits
