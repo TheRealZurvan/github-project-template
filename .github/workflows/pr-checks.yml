@@ -28,8 +28,8 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
       - name: Validate PR title
         run: cog verify "${{ github.event.pull_request.title }}"
-      - name: Run moon CI tasks
-        run: moon ci
+      - name: Lint with moon CI
+        run: moon ci :lint
       - name: Generate CI run reports
         uses: moonrepo/run-report-action@v1
         with:
