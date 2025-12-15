@@ -1,0 +1,5 @@
+[tasks.format]
+run = 'echo "Ok"'
+
+[tasks.lint]
+run = 'echo "Ok"'

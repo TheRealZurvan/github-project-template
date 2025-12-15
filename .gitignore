@@ -15,7 +15,3 @@
 .env
 .env*
 !.env.example
-
-# Moonrepo
-.moon/cache
-.moon/docker

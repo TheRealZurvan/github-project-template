@@ -11,7 +11,7 @@ open source projects.
 - **Language Agnostic**: Works for any programming language or project type
 - **Community Health Files**: Includes standard files for project governance
 - **GitHub Integration**: Pre-configured issue and pull request templates
-- **Development Tools**: Pre-configured development workflow tools including lefthook, moon, moon proto, and cocogitto
+- **Development Tools**: Pre-configured development workflow tools including lefthook, mise, and cocogitto
 - **Customizable**: Easy to adapt to your specific project needs
 
 ## 📋 Included Files
@@ -23,12 +23,11 @@ open source projects.
 - **CODE_OF_CONDUCT.md**: Defines standards for how to engage in the project community
 - **SECURITY.md**: Outlines security procedures and how to report vulnerabilities
 - **.lefthook.yml**: Configuration for lefthook Git hooks manager
-- **.prototools**: Configuration for proto tool version manager and plugin definitions
+- **mise.toml / .tool-versions**: Configuration for the mise tool version manager
 
-### Development Tools (.moon directory)
+### Development Tools Configuration
 
-- **.moon/workspace.yml**: Moon monorepo build system configuration
-- **.moon/plugins/cog.yml**: Proto plugin configuration for cocogitto installation
+- **mise.toml / .tool-versions**: Pin and manage tool versions with mise
 
 ### GitHub Integration (.github directory)
 
@@ -44,15 +43,10 @@ open source projects.
 
 This template includes several pre-configured development tools to improve code quality and streamline workflows:
 
-### Proto (Moon Proto)
+### Mise
 - **Purpose**: Tool version manager that ensures consistent tool versions across different environments
-- **Configuration**: `.prototools` file specifies versions for moon, cocogitto, and lefthook
+- **Configuration**: `mise.toml` and/or `.tool-versions` specify versions for tools like cocogitto and lefthook
 - **Benefits**: Eliminates "works on my machine" issues by pinning exact tool versions
-
-### Moon
-- **Purpose**: Build system and monorepo management tool designed for modern development workflows
-- **Configuration**: `.moon/workspace.yml` configures the workspace to manage projects in `apps/*` and `libs/*` directories
-- **Benefits**: Provides efficient task running, dependency management, and project organization for monorepos
 
 ### Lefthook
 - **Purpose**: Git hooks manager that runs commands automatically during Git operations
@@ -61,46 +55,38 @@ This template includes several pre-configured development tools to improve code 
 
 ### Cocogitto
 - **Purpose**: Conventional commits tool that enforces commit message standards and generates changelogs
-- **Configuration**: Installed via proto plugin (`.moon/plugins/cog.yml`) and integrated with lefthook hooks
+- **Configuration**: Managed via mise and integrated with lefthook hooks
 - **Benefits**: Ensures consistent commit history and enables automated semantic versioning and changelog generation
 
 These tools work together to create a robust development environment with automated quality checks, consistent tooling, and standardized commit practices.
 
 ## ⚡ Installation
 
-This template includes development tools that can be installed to enhance your development workflow. You have two options for installation:
+This template includes development tools that can be installed to enhance your development workflow using mise.
 
-### Automated Installation
+### Install mise
 
-The easiest way to set up all development tools is to use the provided installation script:
+Choose one of the following methods (see https://mise.jdx.dev/ for more options):
 
 ```bash
-./scripts/install.sh
+curl https://mise.run | sh
 ```
 
-This script will:
-1. Install [proto](https://moonrepo.dev/proto) (Moon's tool version manager)
-2. Install all configured tools (moon, cocogitto, lefthook) using `proto use`
-3. Set up Git hooks with lefthook
+After installation, ensure `mise` is on your PATH.
 
-### Manual Installation
+### Install configured tools
 
-If you prefer to install tools manually or need more control over the process:
+From the project root, run:
 
-1. **Install proto**:
-   ```bash
-   bash -c "$(curl -fsSL https://moonrepo.dev/install/proto.sh)"
-   ```
+```bash
+mise install
+```
 
-2. **Install configured tools**:
-   ```bash
-   proto use
-   ```
+### Set up Git hooks
 
-3. **Set up Git hooks**:
-   ```bash
-   lefthook install
-   ```
+```bash
+lefthook install
+```
 
 ## 🛠️ How to Use This Template
 
