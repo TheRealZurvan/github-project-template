@@ -10,8 +10,8 @@ open source projects.
 
 - **Language Agnostic**: Works for any programming language or project type
 - **Community Health Files**: Includes standard files for project governance
-- **GitHub Integration**: Pre-configured issue and pull request templates
-- **Development Tools**: Pre-configured development workflow tools including lefthook, mise, and cocogitto
+- **GitHub Integration**: Pre-configured issue and pull request templates, and local CI testing with act
+- **Development Tools**: Pre-configured development workflow tools including lefthook, mise, cocogitto, and act
 - **Customizable**: Easy to adapt to your specific project needs
 
 ## 📋 Included Files
@@ -23,11 +23,11 @@ open source projects.
 - **CODE_OF_CONDUCT.md**: Defines standards for how to engage in the project community
 - **SECURITY.md**: Outlines security procedures and how to report vulnerabilities
 - **.lefthook.yml**: Configuration for lefthook Git hooks manager
-- **mise.toml / .tool-versions**: Configuration for the mise tool version manager
+- **mise.toml / .tool-versions**: Configuration for the mise tool version manager (including lefthook, cocogitto, and act)
 
 ### Development Tools Configuration
 
-- **mise.toml / .tool-versions**: Pin and manage tool versions with mise
+- **mise.toml / .tool-versions**: Pin and manage tool versions (mise, lefthook, cocogitto, act) with mise
 
 ### GitHub Integration (.github directory)
 
@@ -45,8 +45,8 @@ This template includes several pre-configured development tools to improve code 
 
 ### Mise
 - **Purpose**: Tool version manager that ensures consistent tool versions across different environments
-- **Configuration**: `mise.toml` and/or `.tool-versions` specify versions for tools like cocogitto and lefthook
-- **Benefits**: Eliminates "works on my machine" issues by pinning exact tool versions
+- **Configuration**: `mise.toml` and/or `.tool-versions` specify versions for tools like cocogitto, lefthook, and act
+- **Benefits**: Eliminates "works on my machine" issues by pinning exact tool versions for things like cocogitto, lefthook, and act
 
 ### Lefthook
 - **Purpose**: Git hooks manager that runs commands automatically during Git operations
@@ -57,6 +57,11 @@ This template includes several pre-configured development tools to improve code 
 - **Purpose**: Conventional commits tool that enforces commit message standards and generates changelogs
 - **Configuration**: Managed via mise and integrated with lefthook hooks
 - **Benefits**: Ensures consistent commit history and enables automated semantic versioning and changelog generation
+
+### Act
+- **Purpose**: Run GitHub Actions locally to test workflows before pushing
+- **Configuration**: Managed via mise; uses `.github/act/pull_request.json` for event simulation and integrated as a mise task (`act-pr`)
+- **Benefits**: Faster feedback loops for CI/CD changes and reduced GitHub Actions usage
 
 These tools work together to create a robust development environment with automated quality checks, consistent tooling, and standardized commit practices.
 
@@ -87,6 +92,16 @@ mise install
 ```bash
 lefthook install
 ```
+
+### Local CI Testing (Act)
+
+If you have Docker installed, you can run GitHub Actions locally using `act`. This template includes a pre-configured mise task for testing pull request workflows:
+
+```bash
+mise run act-pr
+```
+
+This command uses `.github/act/pull_request.json` to simulate a pull request event.
 
 ## 🛠️ How to Use This Template
 
