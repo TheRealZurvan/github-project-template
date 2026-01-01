@@ -1,3 +1,6 @@
+[tasks.setup]
+run = "lefthook install"
+
 [tasks.format]
 run = 'echo "Ok"'
 
