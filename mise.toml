@@ -7,13 +7,13 @@ act = "0.2.83"
 run = "lefthook install"
 
 [tasks.format]
-run = 'echo "Ok"'
+run = "echo 'Ok'"
 
 [tasks.lint]
-run = 'echo "Ok"'
+run = "echo 'Ok'"
 
 [tasks.test]
-run = 'echo "Ok"'
+run = "echo 'Ok'"
 
 [tasks.check]
 depends = ["format", "lint", "test"]
@@ -22,4 +22,4 @@ depends = ["format", "lint", "test"]
 depends = ["format", "lint"]
 
 [tasks.act]
-run = 'act pull_request --secret-file .env -e .github/act/pull_request.json -j checks'
+run = "act pull_request --secret-file .env -e .github/act/pull_request.json -j checks"
